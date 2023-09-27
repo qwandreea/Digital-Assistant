@@ -68,7 +68,7 @@
             - POST https://api-m.sandbox.paypal.com/v2/checkout/orders \ -H "Content-Type: application/json" \ -H "Authorization: A21AAIy7raUhGx644y0LRUmQZ5SZ3zB7FLePz_RXx2FOJ1tER61wXHKu9sw6GKyEvzMW2PImOezMDq84JGNJb7Ae8Vb4KeeSQ" \ -d ' 
             - body: <br />
 ```{ "intent": "sale","payer": { "payment_method": "paypal" },"redirect_urls": { "return_url": "http://3.238.27.2:8000/status", "cancel_url": "http://3.238.27.2:8000/status" },"transactions": [ { "amount": { "total": "5.00", "currency": "EUR" },"description": "Personal","item_list": { "items": [ { "name": "Personal", "price": "5.00", "currency": "EUR", "quantity": 1 } ] },"related_resources": [] } ],"id": "PAYID-MCLHZJQ11D49943EA625472T","state": "created", "create_time": "2021-05-08T11:57:25Z","links": [ { "href": "https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCLHZJQ11D49943EA625472T","rel": "self", "method": "GET" }, { "href": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-0FE68891SX992583G","rel": "approval_url", "method": "REDIRECT" }, { "href": "https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCLHZJQ11D49943EA625472T/execute","rel": "execute", "method": "POST" } ] }```
-        - *RESPONSE 2 - Răspusul arată statusul comenzii* <br/>
+        - *RESPONSE 2 - The response shows the status of the order.* <br/>
  ```{
   "id": "PAYID-MCLH2EI20R3541208921094S",
   "status": "CREATED",
@@ -96,7 +96,7 @@
   ]
 } 
 ```
-        - *REQUEST 3 - Acest exemplu de apel arată starea comenzii și alte detalii despre comanda creată*
+        - *REQUEST 3 - This example call displays the order status and other details about the created order.*
             - GET http://3.238.27.2:8000/status?paymentId=PAYID-MCLIFCA4FU57408DT9023625&token=EC-4WK18633FF837550M&PayerID=4TUMXPF593QW2
         - *RESPONSE 3* <br />
     ``` { "id": "PAYID-MCLH2EI20R3541208921094S", 
@@ -119,16 +119,16 @@
         "cancel_url": "http://3.238.27.2:8000/status" }, "create_time": "2021-05-08T11:59:13Z", "update_time": "2021-05-08T12:00:09Z", 
         "links": [ { "href": "https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCLH2EI20R3541208921094S", "rel": "self", "method": "GET" } ],"failed_transactions": [] }``` 
     2. Metode HTTP
-        - *Metoda REQUEST 1 - POST - Înregistrare token*
-            - Primul request foloseste metoda HTTP 'POST'. Se precizează ca parametrii de autentificare "client_id:secret_key", iar in body "grant_type=client_credentials". Metoda returneaza un JSON ce contine campurile: scope, access_token, app_id, expires_in, nonce.
-        - *Metoda REQUEST 2 - POST - Înregistrare comandă*
-            - Acest request foloseste metoda HTTP 'POST'. Se precizează ca parametru token-ul, iar în body se trimit valorile atributelor din body-ul json-ului de mai sus pentru request-ul 
+        - *Metoda REQUEST 1 - POST - Token Registration*
+            - The first request uses the HTTP method 'POST.' The authentication parameters are specified as "client_id:secret_key," and in the request body, "grant_type=client_credentials" is provided. The method returns a JSON containing the fields: scope, access_token, app_id, expires_in, nonce.
+        - *Metoda REQUEST 2 - POST - Order Registration*
+            - This request uses the HTTP method 'POST.' The token is specified as a parameter, and in the request body, the values of the attributes from the JSON body mentioned above for the request are sent.
         - *Metoda REQUEST 3 - GET*
-            - Acest request foloseste metoda HTTP 'GET'. Se precizează ca parametrii id-ul plății înregistrare din request-ul de post, token-ul și id-ul plătitorului. <br/>
-    3. Autentificare si autorizare servicii utilizate
-        - Pentru a putea folosi metodele acestui serviciu, este necesara o autentificare si o autorizare.
-        - Pentru autentificare se va folosi metoda REQUEST 1, care executa un POST cu client_id si secret_key generate la crearea aplicatiei.
-        - Token-ul furnizat trebuie utilizat in headerul request-urilor pentru autorizare. Token-ul are un id si un tip: Bearer.
+            - This request uses the HTTP method 'GET.' It specifies the payment registration ID from the POST request, the token, and the payer's ID as parameters.. <br/>
+    3. Authentication and Authorization of Used Services:
+        - To use the methods of this service, authentication and authorization are required.
+        - For authentication, REQUEST 1 will be used, which performs a POST with the client_id and secret_key generated during application creation.
+        - The provided token must be used in the headers of requests for authorization. The token has an ID and a type: Bearer.
 * **REST API - ApiMedic**: 
     1. Examples of request/response:
          - *REQUEST 1 - This example call retrieves a list of symptoms.* 
@@ -242,7 +242,7 @@
     }
 ]
     ```
-         - *REQUEST 2 - Acest exemplu de apel execută obținerea descrierii pentru un diagnostic*
+         - *REQUEST 2 - This example call retrieves the description for a diagnosis*
             -GET https://sandbox-healthservice.priaid.ch/issues/495/info?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1vZ29zYW5kcmVlYTk5NUB5YWhvby5jb20iLCJyb2xlIjoiVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL3NpZCI6IjkwNDQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3ZlcnNpb24iOiIyMDAiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL2xpbWl0IjoiOTk5OTk5OTk5IiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9tZW1iZXJzaGlwIjoiUHJlbWl1bSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbGFuZ3VhZ2UiOiJlbi1nYiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZXhwaXJhdGlvbiI6IjIwOTktMTItMzEiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL21lbWJlcnNoaXBzdGFydCI6IjIwMjEtMDUtMDMiLCJpc3MiOiJodHRwczovL3NhbmRib3gtYXV0aHNlcnZpY2UucHJpYWlkLmNoIiwiYXVkIjoiaHR0cHM6Ly9oZWFsdGhzZXJ2aWNlLnByaWFpZC5jaCIsImV4cCI6MTYyMDQ4NzQxOSwibmJmIjoxNjIwNDgwMjE5fQ.ZWPVRSTPJSkcfti75pJedd9cQ2-Gl_jhsnGfcxt_gy8&format=json&language=en-gb
          - *RESPONSE 2* <br/>
     ```
@@ -257,7 +257,7 @@
   "TreatmentDescription": "To relieve the symptom of the feeling of distention in the abdomen, there are multiple over-the-counter drugs. One can avoid meteorism by following some advice: 1) avoid carbonated drinks and food with high levels of fructose or sorbitol, 2) avoid food that can produce gas such as beans, cabbages and the like, 3) do not eat too quickly, 4) stop smoking and 5) work out. If meteorism is caused by an underlying disease, then one should visit a specialist to treat the disease first."
     }
     ```
-         - *REQUEST 3 - Acest exemplu de apel execută obținerea diagnosticului*
+         - *REQUEST 3 - This example call retrieves the diagnosis.*
             -POST https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=[10,11,12]&gender=female&year_of_birth=22&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1vZ29zYW5kcmVlYTk5NUB5YWhvby5jb20iLCJyb2xlIjoiVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL3NpZCI6IjkwNDQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3ZlcnNpb24iOiIyMDAiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL2xpbWl0IjoiOTk5OTk5OTk5IiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9tZW1iZXJzaGlwIjoiUHJlbWl1bSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbGFuZ3VhZ2UiOiJlbi1nYiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZXhwaXJhdGlvbiI6IjIwOTktMTItMzEiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL21lbWJlcnNoaXBzdGFydCI6IjIwMjEtMDUtMDMiLCJpc3MiOiJodHRwczovL3NhbmRib3gtYXV0aHNlcnZpY2UucHJpYWlkLmNoIiwiYXVkIjoiaHR0cHM6Ly9oZWFsdGhzZXJ2aWNlLnByaWFpZC5jaCIsImV4cCI6MTYyMDQ5NjkzMSwibmJmIjoxNjIwNDg5NzMxfQ.Gcn2vJojPhp4QE4jXVEK3NDyxu4Y-BRaIgBNwc6CHa0&format=json&language=en-gb
          - *RESPONSE 3* <br/>
     ```
