@@ -358,7 +358,7 @@
 ![Login](/public/images/Login.PNG "Login form")
 ![Register](/public/images/Register.PNG "Register form")
 ![Subscription](/public/images/Subscription.PNG "Subscription form")
-![Symptom checker](/public/images/Symptom checker.PNG "Symptoms form")
+![Symptom checker](/public/images/Symptom%20checker.PNG "Symptoms form")
 ![Diagosis](/public/images/Diagnosis.PNG "Diagnosis")
 ![Diagosis](/public/images/Diagnosis2.PNG "Diagnosis")
 * **References**
