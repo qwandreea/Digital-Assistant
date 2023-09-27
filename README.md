@@ -22,10 +22,10 @@
 * If the symptoms raise a red flag, you will know it's time to consult a doctor urgently or follow the suggested medication.
 
 ### Workflow ###
-* Pasul 1: Autenficarea/Înregistrarea unui cont de utilizator din secțiunea header-ului paginii principale.
-* Pasul 2: Accesare secțiunea Subscription pentru achiziția unui pachet de verificări de diagnostic. Fără un pachet achiziționat, nu se pot face verificări.
-* Pasul 3: Din secțiunea Dashboard, se accesează butonul de verificare de diagnostic.
-* Pasul 4: Se introduc parametrii ceruți din formular, iar aplicația va returna rezultatele găsite.
+* Step 1: Authentication/Registration of a user account from the header section of the main page.
+* Step 2: Access the Subscription section to purchase a diagnostic check package. Without a purchased package, checks cannot be performed.
+* Step 3: From the Dashboard section, click on the diagnostic check button.
+* Step 4: Enter the required parameters in the form, and the application will return the results found.
 
 ### API  Description ###
 * For implementation, I used 2 cloud APIs/services: PayPal API and ApiMedic API.
