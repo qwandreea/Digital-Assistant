@@ -13,7 +13,7 @@
 * PHP 7.4.16
 * Laravel Framework 8.40.0
 * MySQL Ver 14.14
-* HTML5, CSS3, Bootstrap 4, Javascript și Jquery.
+* HTML5, CSS3, Bootstrap 4, Javascript and Jquery.
 
 ### Problem description ###
 
