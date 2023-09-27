@@ -7,7 +7,7 @@
 * If you would like to see which migrations have run thus far, you may use the migrate:status Artisan command: php artisan migrate:status
 * Forcing Migrations To Run In Production: Some migration operations are destructive, which means they may cause you to lose data. In order to protect you from running these commands against your production database, you will be prompted for confirmation before the commands are executed. To force the commands to run without a prompt, use the --force flag: php artisan migrate --force
 
-### Introducere ###
+### Introduction ###
 
 *  **Digital assistant** app is based on the following technologies: 
 * PHP 7.4.16
