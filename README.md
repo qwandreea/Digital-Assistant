@@ -1,4 +1,4 @@
-# Digital assistant app - README #
+# Digital assistant app Laravel Project - README #
 
 ### Creare tabele din comenzile artisan ###
 * Navigare catre directorul radacina
