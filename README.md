@@ -37,7 +37,7 @@
         - Generating a Client ID and Secret Key, which are used for authentication in PayPal developer mode.
         - After entering the credentials in the application's .env file (for security), it was necessary to install the PayPal SDK with a specific Laravel command: composer require paypal/rest-api-sdk-php.
         - The advantage of using an SDK over a direct integration is that the SDK manages authentication by obtaining the OAuth 2.0 access token, and the SDK automatically reflects any updates to the payment API.
-    - The data flow will be detailed in the **Flux de date** section.
+    - The data flow will be detailed in the **Data Flow** section.
 * **REST API - ApiMedic**: 
     - ApiMedic offers a medical symptom checker primarily for patients. Based on the entered symptoms, it informs the patient about possible illnesses, directs them to more medical information, and suggests the right doctor for further clarifications. The symptom checker can be integrated through the flexible API, which is a modular programming interface providing symptom-checking functionality for a parent program.
     - To use this service, we needed the following set-up:
