@@ -1,7 +1,7 @@
 # Digital assistant app Laravel Project - README #
 
-### Creare tabele din comenzile artisan ###
-* Navigare catre directorul radacina
+### Creating tables from artisan commands ###
+* Navigating to the root directory
 * Running Migrations [Documentatie Laravel](https://laravel.com/docs/8.x/migrations)
 * To run all of your outstanding migrations, execute the migrate Artisan command: php artisan migrate
 * If you would like to see which migrations have run thus far, you may use the migrate:status Artisan command: php artisan migrate:status
@@ -9,17 +9,17 @@
 
 ### Introducere ###
 
-* Aplicația **Digital assistant** are la bază următoarele tehnologii: 
+*  **Digital assistant** app is based on the following technologies: 
 * PHP 7.4.16
 * Laravel Framework 8.40.0
 * MySQL Ver 14.14
 * HTML5, CSS3, Bootstrap 4, Javascript și Jquery.
 
-### Descriere problemă ###
+### Problem description ###
 
-* Aplicația **Digital assistant** reprezintă un serviciu software din sfera medicală și are ca principală funcționalitate, verificarea simptomelor și generarea unui diagnostic pe baza unor parametrii selectați de utilizator.
-* S-a întâmplat ca de multe ori câteva simptome să persiste și să te deranjeze? Așadar, aplicația se face utilă în a verifica dacă aceste simptome prezintă o gravitate, furnizează un diagnostic sau mai multe pe baza acestora și redă multe alte informații relevante.
-* Dacă simptomele prezintă un *redflag*, atunci afli că este cazul să consulți un medic urgent sau să urmezi medicamentația sugerată.
+* The **Digital assistant** application is a software service in the medical field, and its main functionality is to check symptoms and generate a diagnosis based on parameters selected by the user.
+* Have you ever had persistent and bothersome symptoms? Therefore, the application becomes useful in checking if these symptoms indicate seriousness, providing a diagnosis or more based on them, and providing many other relevant pieces of information.
+* If the symptoms raise a red flag, you will know it's time to consult a doctor urgently or follow the suggested medication.
 
 ### Workflow ###
 * Pasul 1: Autenficarea/Înregistrarea unui cont de utilizator din secțiunea header-ului paginii principale.
@@ -27,34 +27,34 @@
 * Pasul 3: Din secțiunea Dashboard, se accesează butonul de verificare de diagnostic.
 * Pasul 4: Se introduc parametrii ceruți din formular, iar aplicația va returna rezultatele găsite.
 
-### Descriere API  ###
-* Pentru implementaree, am utilizat 2 API-uri/servicii Cloud: PayPal API și ApiMedic API.
+### API  Description ###
+* For implementation, I used 2 cloud APIs/services: PayPal API and ApiMedic API.
 * **REST API - PayPal**: 
-    - PayPal oferă o modalitate prin care aplicații, coșuri de cumpărături, sisteme de raportare și site-urile web pot comunica programatic cu PayPal. Acest tip de comunicare are loc prin API. API-ul poate face o mulțime de lucruri - cum ar fi verificarea soldului PayPal, căutarea detaliilor tranzacției, emiterea de rambursări etc.
-    - Pentru utilizarea acestui serviciu, am avut nevoie de următoarele set-up-uri:
-        - Crearea unui cont sandbox de developer din [PayPal Developer](https://developer.paypal.com/)
-        - Din sectiunea App&Credentials se va crea noua aplicație.
-        - Se vor genera un Client ID și Secret Key ce se vor utiliza pentru autentificarea ca PayPal developer mode.
-        - După introducerea credențialelor în variabilele fișierului .env (pentru securitate) din aplicație, a fost necesar să mai instalez un SDK Paypal cu o comandă specifică Laravel: composer require paypal/rest-api-sdk-php. 
-        - Avantajul utilizării unui SDK față de o integrare directă este că SDK gestionează autentificarea obținând tokenul de acces OAuth 2.0 și SDK reflectă automat orice actualizare a API-ului de plată. 
-    - Fluxul de date va fi detaliat în secțiunea **Flux de date**.
+    - PayPal provides a way for applications, shopping carts, reporting systems, and websites to communicate programmatically with PayPal. This type of communication happens through an API. The API can do many things, such as checking the PayPal balance, retrieving transaction details, issuing refunds, and more.
+    - To use this service, we needed the following set-up:
+        - Creating a developer sandbox account from [PayPal Developer](https://developer.paypal.com/)
+        - Creating a new application from the App & Credentials section.
+        - Generating a Client ID and Secret Key, which are used for authentication in PayPal developer mode.
+        - After entering the credentials in the application's .env file (for security), it was necessary to install the PayPal SDK with a specific Laravel command: composer require paypal/rest-api-sdk-php.
+        - The advantage of using an SDK over a direct integration is that the SDK manages authentication by obtaining the OAuth 2.0 access token, and the SDK automatically reflects any updates to the payment API.
+    - The data flow will be detailed in the **Flux de date** section.
 * **REST API - ApiMedic**: 
-    - ApiMedic oferă un instrument de verificare a simptomelor medicale în primul rând pentru pacienți. Pe baza simptomelor introduse, îi spune pacientului ce posibile boli are. Îl direcționează către mai multe informații medicale și arată medicul potrivit pentru clarificări suplimentare. Verificatorul de simptome poate fi integrat prin intermediul API-ului flexibil. Aceasta este o interfață de programare modulară, care oferă funcționalități de verificare a simptomelor pentru un program principal.
-    - Pentru utilizarea acestui serviciu, am avut nevoie de următoarele set-up-uri:
-        - Abonare la [portalul pentru developeri](https://apimedic.com/signup)
-        - Obțineți acreditărilor de test pentru a accesa mediul de testare, care conține toate funcționalitățile sistemului.
-        - Din secțiunea API KEYS, sunt furnizate următoarele variabile pentru endpoint: Sandbox Auth-Service, Sandbox Health-Service, Sandbox Username, Sandbox Password.
-    - Fluxul de date va fi detaliat în secțiunea **Flux de date**.
+    - ApiMedic offers a medical symptom checker primarily for patients. Based on the entered symptoms, it informs the patient about possible illnesses, directs them to more medical information, and suggests the right doctor for further clarifications. The symptom checker can be integrated through the flexible API, which is a modular programming interface providing symptom-checking functionality for a parent program.
+    - To use this service, we needed the following set-up:
+        - Signing up on the [developer portal](https://apimedic.com/signup)
+        - Obtaining test credentials to access the testing environment, which includes all system functionalities.
+        - From the API KEYS section, the following variables are provided for endpoints: Sandbox Auth-Service, Sandbox Health-Service, Sandbox Username, and Sandbox Password.
+    - The data flow will be detailed in the  **Data Flow** section.
 
-### Flux de date ###
+### Data Flow ###
 * **REST API - PayPal**:
-* În apelurile API REST, se include adresa URL a serviciului API pentru mediu:
+* In REST API calls, the API service URL for the environment is included:
 * Sandbox: https://api-m.sandbox.paypal.com
 * Live: https://api-m.paypal.com
-    1. Exemple de request / response
-        - *REQUEST 1 - Acest exemplu de apel execută obținerea unui token cu <client_id> <secret> furnizate* 
+    1. Examples of request/response:
+        - *REQUEST 1 - This example call performs token retrieval with the provided* <client_id> and <secret>
             - POST https://api-m.sandbox.paypal.com/v1/oauth2/token -u "AU8bzYsvQtyEIEZ0OH1DzoDc8vVmZYIifQYrBiTqe1OeCTROIstjnY8P2GcPxvvb1ZLmwr7QljgjaVGW:EJ-yiEOfUxpTQcXO6E7DOtpxC55XzygJqVBiN96bZ_yroK5JkeBUJfNKCr8jCQxGl731Kem2Jb20H-ZH" \ -d "grant_type=client_credentials"
-        - *RESPONSE 1 - Răspunsul arată tokenul creat*
+        - *RESPONSE 1 -  The response shows the created token*
     <br />
     ```
     {"scope": "https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks",
@@ -130,8 +130,8 @@
         - Pentru autentificare se va folosi metoda REQUEST 1, care executa un POST cu client_id si secret_key generate la crearea aplicatiei.
         - Token-ul furnizat trebuie utilizat in headerul request-urilor pentru autorizare. Token-ul are un id si un tip: Bearer.
 * **REST API - ApiMedic**: 
-    1. Exemple de request / response
-         - *REQUEST 1 - Acest exemplu de apel execută obținerea listei de simptome* 
+    1. Examples of request/response:
+         - *REQUEST 1 - This example call retrieves a list of symptoms.* 
             - GET https://sandbox-healthservice.priaid.ch/symptoms?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1vZ29zYW5kcmVlYTk5NUB5YWhvby5jb20iLCJyb2xlIjoiVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL3NpZCI6IjkwNDQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3ZlcnNpb24iOiIyMDAiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL2xpbWl0IjoiOTk5OTk5OTk5IiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9tZW1iZXJzaGlwIjoiUHJlbWl1bSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbGFuZ3VhZ2UiOiJlbi1nYiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZXhwaXJhdGlvbiI6IjIwOTktMTItMzEiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL21lbWJlcnNoaXBzdGFydCI6IjIwMjEtMDUtMDMiLCJpc3MiOiJodHRwczovL3NhbmRib3gtYXV0aHNlcnZpY2UucHJpYWlkLmNoIiwiYXVkIjoiaHR0cHM6Ly9oZWFsdGhzZXJ2aWNlLnByaWFpZC5jaCIsImV4cCI6MTYyMDQ4NzE3NiwibmJmIjoxNjIwNDc5OTc2fQ.LKq6ZzfPUoCZkWuoClUAko7jiUWulDK8NbGcPptiv7E&format=json&language=en-gb
          - *RESPONSE 1* <br/>
     ```
@@ -333,27 +333,27 @@
   }
 ]
     ```
-         - *REQUEST 4 - Acest exemplu de apel verifică dacă un simptom e urgent*
+         - *REQUEST 4 - This example call checks if a symptom is urgent*
             -GET https://sandbox-healthservice.priaid.ch/redflag?symptomId=181&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1vZ29zYW5kcmVlYTk5NUB5YWhvby5jb20iLCJyb2xlIjoiVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL3NpZCI6IjkwNDQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3ZlcnNpb24iOiIyMDAiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL2xpbWl0IjoiOTk5OTk5OTk5IiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9tZW1iZXJzaGlwIjoiUHJlbWl1bSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbGFuZ3VhZ2UiOiJlbi1nYiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZXhwaXJhdGlvbiI6IjIwOTktMTItMzEiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL21lbWJlcnNoaXBzdGFydCI6IjIwMjEtMDUtMDMiLCJpc3MiOiJodHRwczovL3NhbmRib3gtYXV0aHNlcnZpY2UucHJpYWlkLmNoIiwiYXVkIjoiaHR0cHM6Ly9oZWFsdGhzZXJ2aWNlLnByaWFpZC5jaCIsImV4cCI6MTYyMDQ5NzA3OSwibmJmIjoxNjIwNDg5ODc5fQ.YKAQp0aPEAQ05900EwkG609tWSNiWAO8Mistq03eGqg&format=json&language=en-gb
          - *RESPONSE 4* <br/>
     ```
     "You have selected a symptom which requires a prompt check with a medical doctor."
     ```
-    2. Metode HTTP
-        - *Metoda REQUEST 1 - GET - Listă simptome*
-            - Se precizează ca parametrii de autentificare un token.
-        - *Metoda REQUEST 2 - GET - Descrierea pentru un diagnostic*
-            - Se precizează ca parametru token-ul și id-ul diagnosticului.
-        - *Metoda REQUEST 3 - POST - Diagnostic*
-            - Se precizează ca parametrii token-ul, un array cu id-ul simptomelor selectate, anul nasterii și sexul.
-        - *Metoda REQUEST 4 - GET - Verificare simptom*
-            - Se precizează ca parametrii token-ul și id-ul simptomului.
-    3. Autentificare și autorizare servicii utilizate
-            - Pentru a putea folosi metodele acestui serviciu, este necesara o autentificare si o autorizare. 
-            - Autentificarea este realizată prin api key-uri și există o funcție în aplicație care face acest lucru
-            - Autorizarea este furnizată prin token-ul (jetonul) utilizat în fiecare request ca parametru
+    2. HTTP Methods
+        - *REQUEST 1 - GET - List of Symptoms*
+            - Authentication token is specified as a parameter.
+        - *REQUEST 2 - GET - Diagnosis Description*
+            - Parameters include the token and diagnosis ID.
+        - *REQUEST 3 - POST - Diagnosis*
+            - Parameters include the token, an array with the selected symptom IDs, birth year, and gender.
+        - *REQUEST 4 - GET - Symptom Verification*
+            - Parameters include the token and symptom ID.
+    3. Authentication and Authorization of Used Services:
+            - To use the methods of this service, authentication and authorization are required. 
+            - Authentication is performed using API keys, and there is a function in the application that handles this.
+            - Authorization is provided through the token used in each request as a parameter.
             
-* **Capturi ecran aplicație** <br/>
+* **App Screenshots.** <br/>
 ![Landing page](/public/images/LandingPage.png "Landing page")
 ![Login](/public/images/Login.PNG "Login form")
 ![Register](/public/images/Register.PNG "Register form")
@@ -361,6 +361,6 @@
 ![Symptom checker](/public/images/Symptom checker.PNG "Symptoms form")
 ![Diagosis](/public/images/Diagnosis.PNG "Diagnosis")
 ![Diagosis](/public/images/Diagnosis2.PNG "Diagnosis")
-* **Referinte**
+* **References**
 [PayPal Developer](https://developer.paypal.com/docs/api/overview/)
 [ApiMedic](https://apimedic.com/)
