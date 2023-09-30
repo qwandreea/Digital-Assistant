@@ -364,3 +364,6 @@
 * **References**
 [PayPal Developer](https://developer.paypal.com/docs/api/overview/)
 [ApiMedic](https://apimedic.com/)
+
+
+© [This project is my personal work.]
